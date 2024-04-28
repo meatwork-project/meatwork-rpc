@@ -7,7 +7,6 @@ import com.meatwork.rpc.module.RpcModule;
  */
 module com.meatwork.rpc {
 	requires io.grpc;
-	requires io.grpc.netty;
 	requires io.grpc.protobuf;
 	requires io.grpc.stub;
 	requires com.meatwork.tools;
