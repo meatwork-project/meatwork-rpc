@@ -17,6 +17,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,11 @@
             <artifactId>grpc-stub</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>annotations-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.meatwork</groupId>
             <artifactId>meatwork-tools</artifactId>
             <version>${revision}</version>
@@ -45,7 +51,7 @@
             <extension>
                 <groupId>kr.motd.maven</groupId>
                 <artifactId>os-maven-plugin</artifactId>
-                <version>1.6.1</version>
+                <version>${os-maven-plugin.version}</version>
             </extension>
         </extensions>
         <pluginManagement>
