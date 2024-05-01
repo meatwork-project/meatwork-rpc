@@ -4,10 +4,10 @@ import com.meatwork.tools.api.service.ApplicationStartup;
 import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Set;
 
 /*
  * Copyright (c) 2016 Taliro.
@@ -15,26 +15,33 @@ import java.util.Set;
  */
 public class RpcOnStartup implements ApplicationStartup {
 
-	private final Set<BindableService> services;
-	private static final Logger LOGGER = LoggerFactory.getLogger(RpcOnStartup.class);
+    private final Set<BindableService> services;
+    private final RpcConfiguration rpcConfiguration;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RpcOnStartup.class);
 
-	public RpcOnStartup(Set<BindableService> services) {
-		this.services = services;
-	}
+    public RpcOnStartup(Set<BindableService> services, RpcConfiguration rpcConfiguration) {
+        this.services = services;
+        this.rpcConfiguration = rpcConfiguration;
+    }
 
-	@Override
-	public void run(String[] args) throws Exception {
-		ServerBuilder<?> serverBuilder = ServerBuilder
-				.forPort(8080);
+    @Override
+    public void run(String[] args) throws Exception {
+        int port = Optional.ofNullable(rpcConfiguration).map(RpcConfiguration::getServerPort).orElse(8080);
 
-		for (BindableService service : services) {
-			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("service %s finded".formatted(service.getClass().getName()));
-			}
-			serverBuilder.addService(service);
-		}
-		Server server = serverBuilder.build();
-		server.start();
-		server.awaitTermination();
-	}
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Starting RPC on port {}", port);
+        }
+
+        ServerBuilder<?> serverBuilder = ServerBuilder.forPort(port);
+
+        for (BindableService service : services) {
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("service %s finded".formatted(service.getClass().getName()));
+            }
+            serverBuilder.addService(service);
+        }
+        Server server = serverBuilder.build();
+        server.start();
+        server.awaitTermination();
+    }
 }
