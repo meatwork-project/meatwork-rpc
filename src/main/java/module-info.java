@@ -6,8 +6,6 @@ module com.meatwork.rpc {
 	requires com.meatwork.core;
 	requires org.slf4j;
 	requires java.xml;
-	requires io.netty.transport;
-	requires io.netty.buffer;
 	requires msgpack.core;
 	requires commons.lang;
 	requires org.reflections;
@@ -16,7 +14,9 @@ module com.meatwork.rpc {
 	requires jackson.dataformat.msgpack;
 	requires java.rmi;
 	requires java.net.http;
-	requires io.netty.codec;
+	requires io.netty.transport;
+	requires io.netty.buffer;
+
 
 	exports com.meatwork.rpc.api;
 	exports com.meatwork.rpc.internal to com.meatwork.rpc.test;
