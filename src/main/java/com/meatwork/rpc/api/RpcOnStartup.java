@@ -23,6 +23,11 @@ public class RpcOnStartup implements ApplicationStartup {
 	private final RpcConfiguration rpcConfiguration;
 	private final ServerHandler serverHandler;
 
+	@Override
+	public int priority() {
+		return 999;
+	}
+
 	@Inject
 	public RpcOnStartup(RpcConfiguration rpcConfiguration,
 	                    ServerHandler serverHandler) {
