@@ -22,6 +22,7 @@ public class RpcOnStartup implements ApplicationStartup {
 
 	private final RpcConfiguration rpcConfiguration;
 	private final ServerHandler serverHandler;
+	static EventLoopGroup group;
 
 	@Override
 	public int priority() {
@@ -46,7 +47,7 @@ public class RpcOnStartup implements ApplicationStartup {
 	}
 
 	private void runServer(int port) throws InterruptedException {
-		EventLoopGroup group = new NioEventLoopGroup();
+		group = new NioEventLoopGroup();
 		try {
 			ServerBootstrap b = new ServerBootstrap();
 			b.group(group)

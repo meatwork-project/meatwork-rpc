@@ -23,7 +23,7 @@ public class ContentExtractor implements Extractor {
     }
 
     private void computedLine(String line, HttpHeader.Builder builder) throws RpcRemoteException {
-        String[] col = line.toLowerCase().split(" ");
+        String[] col = line.split(" ");
         if (containsMethodHttp(col[0])) {
 	        HttpMethod method = HttpMethod.valueOf(col[0].toUpperCase());
 			if(!method.equals(HttpMethod.POST)) {
@@ -46,6 +46,6 @@ public class ContentExtractor implements Extractor {
     }
 
     private boolean containsMethodHttp(String line) {
-        return line.equals("post") || line.equals("get") || line.equals("patch") || line.equals("put") || line.equals("delete");
+        return "POST".equals(line) || "GET".equals(line) || "PATCH".equals(line) || "PUT".equals(line) || "DELETE".equals(line);
     }
 }

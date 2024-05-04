@@ -1,6 +1,7 @@
 package com.meatwork.rpc.test;
 
 import com.meatwork.rpc.api.RpcOnStartup;
+import com.meatwork.rpc.api.StopServer;
 import com.meatwork.rpc.internal.ContentExtractor;
 import com.meatwork.rpc.internal.RequestDeserializer;
 import com.meatwork.rpc.internal.ServerHandler;
@@ -24,7 +25,7 @@ public class RunRpcServerTest {
 	    RequestDeserializer requestDeserializer = new RequestDeserializer(new ContentExtractor());
 	    ServerHandler serverHandler = new ServerHandler(
 			    requestDeserializer,
-			    Set.of(new RemoteImpl()));
+			    Set.of(new RemoteImpl(), new StopServer()));
         RpcOnStartup rpcOnStartup = new RpcOnStartup(null,
                                                      serverHandler
         );
