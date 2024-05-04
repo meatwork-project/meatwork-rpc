@@ -1,21 +1,23 @@
-import com.google.inject.Module;
-import com.meatwork.rpc.module.RpcModule;
-
 /*
  * Copyright (c) 2016 Taliro.
  * All rights reserved.
  */
 module com.meatwork.rpc {
-	requires io.grpc;
-	requires io.grpc.protobuf;
-	requires io.grpc.stub;
-	requires com.meatwork.tools;
-	requires com.google.guice;
-	requires proto.google.common.protos;
+	requires com.meatwork.core;
 	requires org.slf4j;
-
-	uses Module;
-	provides Module with RpcModule;
+	requires java.xml;
+	requires io.netty.transport;
+	requires io.netty.buffer;
+	requires msgpack.core;
+	requires commons.lang;
+	requires org.reflections;
+	requires com.fasterxml.jackson.databind;
+	requires jakarta.inject;
+	requires jackson.dataformat.msgpack;
+	requires java.rmi;
+	requires java.net.http;
+	requires io.netty.codec;
 
 	exports com.meatwork.rpc.api;
+	exports com.meatwork.rpc.internal to com.meatwork.rpc.test;
 }
