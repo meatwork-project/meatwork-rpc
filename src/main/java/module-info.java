@@ -17,7 +17,6 @@ module com.meatwork.rpc {
 	requires io.netty.transport;
 	requires io.netty.buffer;
 
-
 	exports com.meatwork.rpc.api;
-	exports com.meatwork.rpc.internal to com.meatwork.rpc.test;
+	exports com.meatwork.rpc.internal to com.meatwork.rpc.test, com.meatwork.core;
 }
