@@ -5,7 +5,6 @@
 module com.meatwork.rpc.test {
 	requires com.meatwork.rpc;
 	requires com.meatwork.core;
-	requires org.junit.jupiter.api;
 	requires org.mockito.junit.jupiter;
 	requires org.mockito;
 	requires com.fasterxml.jackson.core;

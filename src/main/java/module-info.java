@@ -4,13 +4,11 @@
  */
 module com.meatwork.rpc {
 	requires com.meatwork.core;
-	requires org.slf4j;
 	requires java.xml;
 	requires msgpack.core;
 	requires commons.lang;
 	requires org.reflections;
 	requires com.fasterxml.jackson.databind;
-	requires jakarta.inject;
 	requires jackson.dataformat.msgpack;
 	requires java.rmi;
 	requires java.net.http;
