@@ -9,6 +9,7 @@ module com.meatwork.rpc.test {
 	requires org.mockito;
 	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
+	requires org.junit.jupiter.api;
 
 	opens com.meatwork.rpc.test;
 
