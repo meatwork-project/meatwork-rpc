@@ -29,6 +29,6 @@ public class RunRpcServerTest {
         RpcOnStartup rpcOnStartup = new RpcOnStartup(null,
                                                      serverHandler
         );
-        rpcOnStartup.run(null);
+        rpcOnStartup.run(null, null);
     }
 }

@@ -38,7 +38,7 @@ public class RpcOnStartup implements ApplicationStartup {
 
 
 	@Override
-    public void run(String[] args) throws Exception {
+    public void run(Class<?> applicationCls, String[] args) throws Exception {
 		int serverPort = 7777;
 		if(rpcConfiguration != null) {
 			serverPort = rpcConfiguration.getServerPort();
